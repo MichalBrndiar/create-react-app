@@ -1,3 +1,41 @@
+# Note
+I've forked CRA to verify that there is another way of build process modification than other *ejecting*... :)
+## Usage:
+```sh
+npx create-react-app --scripts-version mikesons-react-scripts my-app
+cd my-app
+npm start
+```
+
+## How this was done:
+- Fork CRA
+- Make required modifications to *react-scripts* (don't forget to rename in *package.json*)
+```json
+...
+"name": "mikesons-react-scripts",
+  "version": "3.2.2",
+  "description": "mikeson's configuration and scripts for Create React App.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michalbrndiar/create-react-app.git",
+    "directory": "packages/react-scripts"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10"
+  },
+  "bugs": {
+    "url": "https://github.com/michalbrndiar/create-react-app/issues"
+  },
+ ...
+```
+- Publish modified react-scripts package 
+```sh
+npm publish
+```
+
+[This article](https://auth0.com/blog/how-to-configure-create-react-app/) was great inspiration.
+
 # Create React App [![Build Status](https://dev.azure.com/facebook/create-react-app/_apis/build/status/facebook.create-react-app?branchName=master)](https://dev.azure.com/facebook/create-react-app/_build/latest?definitionId=1&branchName=master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/facebook/create-react-app/pulls)
 
 Create React apps with no build configuration.
